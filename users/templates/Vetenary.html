@@ -1,0 +1,87 @@
+{% extends 'base.html'%}
+{% load static %}
+{% block content%}
+
+<div class="app-content content" style="margin-left:-40px;">
+    <div class="content-wrapper">
+      <div class="content-wrapper-before"></div>
+      <div class="content-header row">
+        <div class="content-header-left col-md-4 col-12 mb-2">
+          <h3 class="content-header-title"></h3>
+        </div>
+      </div>
+      <div class="content-body"><!-- Basic Tables start -->
+        <div class="row">
+           <div class="col-12">
+              <div class="card">
+                  <div class="card-header">
+                      <h4 class="card-title">Veterinarians</h4>
+                      <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
+                      <div class="heading-elements">
+                          <ul class="list-inline mb-0">
+                            {% if request.user.typee == "Admin" %}
+                            <a href="{% url 'addVet'%}" style="color:white"><button type="button" class="btn btn-success btn-min-width mr-1 mb-1">Add new</button></a>
+                            {% else%}
+                            <b></b>
+                            {% endif %}
+                              <li><a data-action="collapse"><i class="ft-minus"></i></a></li>
+                              <li><a data-action="expand"><i class="ft-maximize"></i></a></li>
+                              <li><a data-action="close"><i class="ft-x"></i></a></li>
+                          </ul>
+                      </div>
+                  </div>
+          <div class="card-content collapse show">
+              <div class="card-body">
+                  <div class="table-responsive">
+                      <table class="table">
+                          <thead>
+                              <tr>
+                                  <th>First Name</th>
+                                  <th>Last Name</th>
+                                  <th>Province</th>
+                                  <th>District</th>
+                                  <th>Sector</th>
+                                  <th>Cell</th>
+                                  <th>Email</th>
+                                  <th>PhoneNumber</th>
+                                  <th>Action</th>
+                              </tr>
+                          </thead>
+                          <tbody>
+                            {% for vet in Vete %}
+                              <tr>
+                                  <td>{{vet.FirstName}}</td>
+                                  <td>{{vet.LastName}}</td>
+                                  <td>{{vet.Province}}</td>
+                                  <td>{{vet.District}}</td>
+                                  <td>{{vet.Sector}}</td>
+                                  <td>{{vet.Cell}}</td>
+                                  <td>{{vet.email}}</td>
+                                  <td>{{vet.phone}}</td>
+                                  <td>
+                                    <a href="{% url 'updateUser' vet.id %}" style="color:white">
+                                      <button type="button" class="btn btn-info btn-min-width mr-1 mb-1"><i class="la la-pencil-square"></i></button> 
+                                    </a>
+
+                                    <a onclick="return confirm('Are you sure you want to delete this?')" href="{% url 'delete_user' vet.id %}" style="color:white">
+                                      <button type="button" class="btn btn-danger btn-min-width mr-1 mb-1"><i class="la la-bitbucket-square"></i></button> 
+                                    </a>
+                                  </td>
+                              </tr>
+                              {% endfor %}
+                          </tbody>
+                      </table>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+
+<!-- Bordered table end -->
+      </div>
+    </div>
+  </div>
+
+
+{% endblock content%}

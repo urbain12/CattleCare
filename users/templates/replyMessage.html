@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+  <div class="app-content content" style="margin-left:-20px">
+    <div class="content-wrapper">
+      <div class="content-wrapper-before"></div>
+      <div class="content-header row">
+        <div class="content-header-left col-md-4 col-12 mb-2">
+          <h3 class="content-header-title">Add New Case</h3>
+        </div>
+      </div>
+      <div class="content-body">
+        <!-- Basic Inputs start -->
+
+        <section class="textarea-select">
+          <!-- Textarea start -->
+          <div class="row match-height">
+            <div class="col-lg-12 col-md-12">
+              <div class="card mt-50">
+                <div class="card-block">
+                  <div class="card-body">
+                    <form enctype="multipart/form-data" action="{% url 'ReplyMsg' msg.id%}" method='POST'>
+                      {% csrf_token %}
+                      <div class="row">
+                        <fieldset class="form-group col-lg-12">
+                            <h5 class="mt-2">{{msg.Message}}</h5>
+                          </fieldset>
+                      </div>
+                      <h5 class="mt-2">Reply</h5>
+                      <fieldset class="form-group">
+                        <textarea class="form-control" name="Msg" id="basicTextarea" rows="3"></textarea>
+                      </fieldset>
+                      <div class="form-group">
+                        <button type="submit" class="btn mb-1 btn-info btn-lg btn-block">Submit</button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Textarea end -->
+        </section>
+      </div>
+    </div>
+  </div>
+{% endblock %}

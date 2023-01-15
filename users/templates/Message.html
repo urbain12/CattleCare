@@ -1,0 +1,83 @@
+{% extends 'base.html'%}
+{% load static %}
+{% block content%}
+
+<div class="app-content content" style="margin-left:-40px;">
+    <div class="content-wrapper">
+      <div class="content-wrapper-before"></div>
+      <div class="content-header row">
+        <div class="content-header-left col-md-4 col-12 mb-2">
+          <h3 class="content-header-title"></h3>
+        </div>
+      </div>
+      <div class="content-body"><!-- Basic Tables start -->
+        <div class="row">
+           <div class="col-12">
+              <div class="card">
+                  <div class="card-header">
+                      <h4 class="card-title">Messages </h4>
+                      <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
+                      <div class="heading-elements">
+                          <ul class="list-inline mb-0">
+                            {% if request.user.typee == "Hand" %}
+                            <a href="{% url 'addMessage'%}" style="color:white"><button type="button" class="btn btn-success btn-min-width mr-1 mb-1">Add new</button></a>
+                            {% else%}
+                            <b></b>
+                            {% endif %}
+                              <li><a data-action="collapse"><i class="ft-minus"></i></a></li>
+                              <li><a data-action="expand"><i class="ft-maximize"></i></a></li>
+                              <li><a data-action="close"><i class="ft-x"></i></a></li>
+                          </ul>
+                      </div>
+                  </div>
+          <div class="card-content collapse show">
+              <div class="card-body">
+                  <div class="table-responsive">
+                      <table class="table">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>First Name</th>
+                                <th>Last Name</th>
+                                <th>Address</th>
+                                <th>Message</th>
+                                <th>Reply</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                          {% for msg in messages %}
+                            <tr>
+                                <td scope="row">{{msg.id}}</td>
+                                <td>{{msg.user.FirstName}}</td>
+                                <td>{{msg.user.LastName}}</td>
+                                <td>{{msg.Sector}}</td>
+                                <td>{{msg.Message}}</td>
+                                <td>{{msg.reply}}</td>
+                                <td>
+                                  {% if msg.replied %}
+                                  <button type="button" class="btn btn-warning btn-min-width mr-1 mb-1">Replied</button>
+                                  {% elif request.user.typee == "Admin" %}
+                                  <a href="{% url 'ReplyMsg' msg.id %}" style="color:white"><button type="button" class="btn btn-primary btn-min-width mr-1 mb-1">Reply</button></a> 
+                                  {% else %}
+                                  <a href="" style="color:white"><button type="button" class="btn btn-info btn-min-width mr-1 mb-1">Sent</button></a> 
+                                  {% endif %}
+                                </td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+
+<!-- Bordered table end -->
+      </div>
+    </div>
+  </div>
+
+
+{% endblock content%}

@@ -1,0 +1,95 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+  <div class="app-content content" style="margin-left:-20px">
+    <div class="content-wrapper">
+      <div class="content-wrapper-before"></div>
+      <div class="content-header row">
+        <div class="content-header-left col-md-4 col-12 mb-2">
+          <h3 class="content-header-title">Update User</h3>
+        </div>
+      </div>
+      <div class="content-body">
+        <!-- Basic Inputs start -->
+
+        <section class="textarea-select">
+          <!-- Textarea start -->
+          <div class="row match-height">
+            <div class="col-lg-12 col-md-12">
+              <div class="card mt-50">
+                <div class="card-block">
+                  <div class="card-body">
+                    <form enctype="multipart/form-data" action="{% url 'updateUser' updateuser.id %}" method='POST'>
+                      {% csrf_token %}
+                      <div class="row">
+                        <fieldset class="form-group col-lg-6">
+                          <h5 class="mt-2">First Name</h5>
+                          <input type="text" class="form-control" id="basicInput" name="fname" value={{updateuser.FirstName}} />
+                        </fieldset>
+                        <fieldset class="form-group col-lg-6">
+                          <h5 class="mt-2">Last Name</h5>
+                          <input type="text" class="form-control" id="basicInput" name="lname" value={{updateuser.LastName}} />
+                        </fieldset>
+                      </div>
+                      <div class="row">
+                        <fieldset class="form-group col-lg-3">
+                          <h5 class="mt-2">Province</h5>
+                          <select class="form-control" id="basicSelect" name="Pname" >
+                            <option >{{updateuser.Province}}</option>
+                            <option>North</option>
+                            <option>South</option>
+                          </select>
+                        </fieldset>
+
+                        <fieldset class="form-group col-lg-3">
+                          <h5 class="mt-2">District</h5>
+                          <select class="form-control" id="basicSelect" name="Dname">
+                            <option>{{updateuser.District}}</option>
+                            <option>Musanze</option>
+                            <option>Huye</option>
+                          </select>
+                        </fieldset>
+
+                        <fieldset class="form-group col-lg-3">
+                          <h5 class="mt-2">Sector</h5>
+                          <select class="form-control" id="basicSelect" name="Sname">
+                            <option>{{updateuser.Sector}}</option>
+                            <option>Muhinga</option>
+                            <option>Ngoma</option>
+                          </select>
+                        </fieldset>
+
+                        <fieldset class="form-group col-lg-3">
+                          <h5 class="mt-2">Cell</h5>
+                          <select class="form-control" id="basicSelect" name="Cname">
+                            <option>{{updateuser.Cell}}</option>
+                            <option>Mukundwa</option>
+                            <option>Matyazo</option>
+                          </select>
+                        </fieldset>
+                      </div>
+                      <div class="row">
+                        <fieldset class="form-group col-lg-6">
+                          <h5 class="mt-2">Email</h5>
+                          <input type="email" class="form-control" id="basicInput" name="email" value={{updateuser.email}} />
+                        </fieldset>
+                        <fieldset class="form-group col-lg-6">
+                          <h5 class="mt-2">Phone Number</h5>
+                          <input type="number" class="form-control" id="basicInput" name="phone" value={{updateuser.phone}} />
+                        </fieldset>
+                      </div>
+                      <div class="form-group">
+                        <button type="submit" class="btn mb-1 btn-info btn-lg btn-block">Submit</button>
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- Textarea end -->
+        </section>
+      </div>
+    </div>
+  </div>
+{% endblock %}
