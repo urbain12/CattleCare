@@ -19,6 +19,7 @@
                       <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
                       <div class="heading-elements">
                           <ul class="list-inline mb-0">
+                            <a href="{% url 'exportHand'%}" style="color:white"><button type="button" class="btn btn-info btn-min-width mr-1 mb-1">Export Hand</button></a>
                             {% if request.user.typee == "Vet" %}
                             <a href="{% url 'addHand'%}" style="color:white"><button type="button" class="btn btn-success btn-min-width mr-1 mb-1">Add new</button></a>
                             {% else%}

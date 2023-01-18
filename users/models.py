@@ -67,7 +67,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     REQUIRED_FIELDS = []
 
     def __str__(self):
-        return self.typee
+        return self.typee +" "+ self.Sector
 
     def has_perm(self, perm, obj=None):
         return True

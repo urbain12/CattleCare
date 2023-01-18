@@ -158,7 +158,9 @@ def changeuserpassword(request, userID):
 #Vet
 def Vet(request):
     Vete=User.objects.filter(typee='Vet')
-    return render(request, 'Vetenary.html',{'Vete':Vete})
+    sec=User.objects.values('Sector').distinct()
+    print(sec)
+    return render(request, 'Vetenary.html',{'Vete':Vete,'sec':sec})
 
 def addVet(request):
     if request.method == "POST":
@@ -371,8 +373,7 @@ def exportCsv(request):
                 sub.symptoms,
                 sub.cattleType,
                 sub.reply,
-                sub.send_at 
-,
+                sub.send_at,
             ]
 
             print(transactions)
@@ -395,6 +396,150 @@ def exportCsv(request):
 
 
 
+
+def exportVet(request):
+    today = datetime.today()
+    ondate=today.strftime("%Y-%m-%d %H:%M")
+    vets=request.POST['vet']
+    response = HttpResponse(content_type='text/csv')
+    response['Content-Disposition'] = f'attachment; filename="List of vet - {ondate}.csv"'
+    writer = csv.writer(response)
+    writer.writerow([
+
+        'RVF CATTLE CARE'
+    ])
+
+    writer.writerow([
+
+        {vets}
+
+    ])
+     
+                    
+    Vet = User.objects.filter(Sector = request.POST['vet'], typee='Vet')    
+    instalments = []
+    for sub in Vet:
+            transactions = [
+                sub.FirstName+" "+sub.LastName,
+                sub.Sector,
+                sub.Cell,
+                sub.phone,
+                sub.email,
+            ]
+
+            print(transactions)
+            print(type(transactions))
+            instalments.append(transactions)
+
+    writer.writerow([
+        "Number of Vet: " + str(len(instalments))
+
+    ])
+    writer.writerow([
+        ''
+
+    ])
+    writer.writerow(['Vet Names','Sector','Cell','phone','email'])
+    for user in instalments:
+        writer.writerow(user)
+
+    return response
+
+
+def exportHand(request):
+    today = datetime.today()
+    ondate=today.strftime("%Y-%m-%d %H:%M")
+    response = HttpResponse(content_type='text/csv')
+    response['Content-Disposition'] = f'attachment; filename="List of Hand - {ondate}.csv"'
+    writer = csv.writer(response)
+    writer.writerow([
+
+        'RVF CATTLE CARE'
+    ])
+
+    writer.writerow([
+
+        {request.user.Sector}
+
+    ])
+     
+                    
+    Vet = User.objects.filter(Sector = request.user.Sector, typee='Hand')    
+    instalments = []
+    for sub in Vet:
+            transactions = [
+                sub.FirstName+" "+sub.LastName,
+                sub.Sector,
+                sub.Cell,
+                sub.phone,
+                sub.email,
+            ]
+
+            print(transactions)
+            print(type(transactions))
+            instalments.append(transactions)
+
+    writer.writerow([
+        "Number of Vet: " + str(len(instalments))
+
+    ])
+    writer.writerow([
+        ''
+
+    ])
+    writer.writerow(['Vet Names','Sector','Cell','phone','email'])
+    for user in instalments:
+        writer.writerow(user)
+
+    return response
+
+
+def exportBreeder(request):
+    today = datetime.today()
+    ondate=today.strftime("%Y-%m-%d %H:%M")
+    response = HttpResponse(content_type='text/csv')
+    response['Content-Disposition'] = f'attachment; filename="List of Breeder - {ondate}.csv"'
+    writer = csv.writer(response)
+    writer.writerow([
+
+        'RVF CATTLE CARE'
+    ])
+
+    writer.writerow([
+
+        {request.user.Sector}
+
+    ])
+     
+                    
+    Vet = User.objects.filter(Sector = request.user.Sector, typee='Cat')    
+    instalments = []
+    for sub in Vet:
+            transactions = [
+                sub.FirstName+" "+sub.LastName,
+                sub.Sector,
+                sub.Cell,
+                sub.phone,
+                sub.email,
+            ]
+
+            print(transactions)
+            print(type(transactions))
+            instalments.append(transactions)
+
+    writer.writerow([
+        "Number of Vet: " + str(len(instalments))
+
+    ])
+    writer.writerow([
+        ''
+
+    ])
+    writer.writerow(['Vet Names','Sector','Cell','phone','email'])
+    for user in instalments:
+        writer.writerow(user)
+
+    return response
 
 #Mobile
 

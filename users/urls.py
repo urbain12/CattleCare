@@ -40,8 +40,11 @@ urlpatterns = [
     path('addMessage/',addMessage,name='addMessage'),
     path('ReplyMsg/<int:MessageID>/',ReplyMsg,name='ReplyMsg'),
 
-    #eport
+    #export
     path('exportCsv/',exportCsv,name='exportCsv'),
+    path('exportVet/',exportVet,name='exportVet'),
+    path('exportHand/',exportHand,name='exportHand'),
+    path('exportBreeder/',exportBreeder,name='exportBreeder'),
 
 
     #Api

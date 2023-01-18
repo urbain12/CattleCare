@@ -16,6 +16,22 @@
               <div class="card">
                   <div class="card-header">
                       <h4 class="card-title">Veterinarians</h4>
+                      <form enctype="multipart/form-data" action="{% url 'exportVet' %}" method='POST'>
+                        {% csrf_token %}
+                        <div class="row">
+                          <fieldset class="form-group col-lg-4">
+                            <select class="form-control" id="basicSelect" name="vet">
+                              <option value="">Select Sector</option>
+                              {% for sector in sec %}
+                              <option value={{sector.Sector}}>{{sector.Sector}}</option>
+                              {%endfor%}                            
+                            </select>
+                          </fieldset>
+                          <div class="form-group">
+                            <button type="submit" class="btn btn-success btn-min-width mr-1 col-lg-4" >Export</button>
+                          </div>
+                        </div>
+                      </form>
                       <a class="heading-elements-toggle"><i class="la la-ellipsis-v font-medium-3"></i></a>
                       <div class="heading-elements">
                           <ul class="list-inline mb-0">
