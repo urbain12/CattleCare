@@ -147,7 +147,7 @@ def changeuserpassword(request, userID):
                 password = request.POST['newpassword']
                 user.set_password(password)
             user.save()
-            return redirect('Users')
+            return redirect('index')
         else:
             alert = True
             return render(request, 'changepassword.html', {'alert': alert})
@@ -309,7 +309,7 @@ def Reply(request,caseID):
 
 #Message
 def Messages(request):
-    messages=Message.objects.filter(Sector =request.user.Sector)
+    messages=Message.objects.filter(Sector = request.user.Sector)
     return render(request, 'Message.html',{'messages':messages})
 
 def addMessage(request):

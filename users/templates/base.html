@@ -52,24 +52,28 @@
     <div class="main-menu menu-fixed menu-light menu-accordion    menu-shadow " data-scroll-to-active="true" data-img="{% static "theme-assets/images/backgrounds/02.jpg" %}">
       <div class="navbar-header">
         <ul class="nav navbar-nav flex-row">       
-          <li class="nav-item mr-auto"><a class="navbar-brand" href="index.html"><img class="brand-logo" alt="Chameleon admin logo" src="{% static "theme-assets/images/logo/Logo.png" %}"/>
+          <li class="nav-item mr-auto"><a class="navbar-brand" href=""><img class="brand-logo" alt="Chameleon admin logo" src="{% static "theme-assets/images/logo/Logo.png" %}"/>
               <h3 class="brand-text">RVF CattleCare</h3></a></li>
               </a>
         </ul>
       </div>
       <div class="main-menu-content">
         <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
-          <li><a href="{% url 'index' %}"><span class="menu-title" data-i18n="">{{request.user.email}}</span></a>
+          <li><a href=""><span class="menu-title" data-i18n="">{{request.user.email}}</span></a>
           </li>
 
-            <li class="active"><a href="{% url 'index' %}"><i class="ft-home"></i><span class="menu-title" data-i18n="">Dashboard</span></a>
+            <li class="active"><a href="{% url 'Dashboard' %}"><i class="ft-home"></i><span class="menu-title" data-i18n="">Dashboard</span></a>
             </li>
             
             <li class=" nav-item"><a href="{% url 'Cases' %}"><i class="ft-pie-chart"></i><span class="menu-title" data-i18n="">Case</span></a>
             </li>
 
+            {% if request.user.typee == "Vet" %}
             <li class=" nav-item"><a href="{% url 'Messages' %}"><i class="ft-pie-chart"></i><span class="menu-title" data-i18n="">Message</span></a>
             </li>
+            {%else%}
+            <li></li>
+            {%endif%}
            
             <li class=" nav-item"><a href="{% url 'Vet' %}"><i class="ft-droplet"></i><span class="menu-title" data-i18n="">Veteranaries</span></a>
             </li>
@@ -80,7 +84,7 @@
             <li class=" nav-item"><a href="{% url 'Hand' %}"><i class="ft-box"></i><span class="menu-title" data-i18n="">Hand</span></a>
             </li>
 
-            <li class=" nav-item"><a href="{% url 'changeuserpassword' user.id %}"><i class="ft-box"></i><span class="menu-title" data-i18n="">Change Password</span></a>
+            <li class=" nav-item"><a href="{% url 'changeuserpassword' request.user.id %}"><i class="ft-box"></i><span class="menu-title" data-i18n="">Change Password</span></a>
             </li>
 
             {% if request.user.typee == "Admin" %}
