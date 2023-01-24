@@ -71,7 +71,7 @@ def logout(request):
 def Dashboard(request):
     allHand = len(User.objects.filter(typee = 'Hand'))
     allVet = len(User.objects.filter(typee = 'Vet'))
-    allcat = len(User.objects.filter(typee = 'Cat'))
+    allcat = len(User.objects.filter(typee = 'Breeder'))
     return render(request, 'Dashboard.html',{
             "allHand": allHand,
             "allVet": allVet,
@@ -237,7 +237,7 @@ def addHand(request):
 #Breeder
 
 def Breeder(request):
-    breeder=User.objects.filter(typee='Cat')
+    breeder=User.objects.filter(typee='Breeder')
     return render(request, 'Breeder.html',{'breeder':breeder})
 
 def addBreeder(request):
@@ -263,7 +263,7 @@ def addBreeder(request):
                     District=request.POST["Dname"],
                     Sector=request.POST["Sname"],
                     Cell=request.POST["Cname"],
-                    typee="Cat",
+                    typee="Breeder",
                     email=request.POST["email"],
                     phone=request.POST["phone"],
                     password=request.POST["pswd"],
@@ -290,7 +290,7 @@ def addCase(request):
         AddCase.save()
         return redirect("Cases")
     else:
-        users=User.objects.filter(typee='Cat')
+        users=User.objects.filter(typee='Breeder')
         return render(request, 'addCase.html',{'users':users})
 
 def Reply(request,caseID):
@@ -512,7 +512,7 @@ def exportBreeder(request):
     ])
      
                     
-    Vet = User.objects.filter(Sector = request.user.Sector, typee='Cat')    
+    Vet = User.objects.filter(Sector = request.user.Sector, typee='Breeder')    
     instalments = []
     for sub in Vet:
             transactions = [
