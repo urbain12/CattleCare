@@ -68,21 +68,23 @@
             <li class=" nav-item"><a href="{% url 'Cases' %}"><i class="ft-pie-chart"></i><span class="menu-title" data-i18n="">Case</span></a>
             </li>
 
-            {% if request.user.typee == "Vet" %}
+            {% if request.user.typee != "Admin" %}
             <li class=" nav-item"><a href="{% url 'Messages' %}"><i class="ft-pie-chart"></i><span class="menu-title" data-i18n="">Message</span></a>
             </li>
-            {%else%}
-            <li></li>
             {%endif%}
-           
+            
             <li class=" nav-item"><a href="{% url 'Vet' %}"><i class="ft-droplet"></i><span class="menu-title" data-i18n="">Veteranaries</span></a>
             </li>
+
+            {% if request.user.typee != "Hand" %}
+            <li class=" nav-item"><a href="{% url 'Hand' %}"><i class="ft-box"></i><span class="menu-title" data-i18n="">Hand</span></a>
+            </li>
+            {%endif%}
             
+
             <li class=" nav-item"><a href="{% url 'Breeder' %}"><i class="ft-layers"></i><span class="menu-title" data-i18n="">Breeder</span></a>
             </li>
             
-            <li class=" nav-item"><a href="{% url 'Hand' %}"><i class="ft-box"></i><span class="menu-title" data-i18n="">Hand</span></a>
-            </li>
 
             <li class=" nav-item"><a href="{% url 'changeuserpassword' request.user.id %}"><i class="ft-box"></i><span class="menu-title" data-i18n="">Change Password</span></a>
             </li>
@@ -90,8 +92,6 @@
             {% if request.user.typee == "Admin" %}
             <li class=" nav-item"><a href="{% url 'Users' %}"><i class="ft-bold"></i><span class="menu-title" data-i18n="">Operator</span></a>
             </li>
-            {%else%}
-            <li></li>
             {%endif%}
 
             <li class=" nav-item"><a href="{% url 'logout' %}"><i class="ft-bold"></i><span class="menu-title" data-i18n="">Logout</span></a>

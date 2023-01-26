@@ -51,7 +51,7 @@
 
                       <fieldset class="form-group col-lg-3">
                         <h5 class="mt-2">Sector</h5>
-                        <select class="form-control" id="basicSelect" name="Sname">
+                        <select class="form-control" id="slct1" name="Sname" onchange="populate(this.id,'slct2')">
                           <option>Select Sector</option>
                           <option>Tabagwe</option>
                           <option>Rwimiyaga</option>
@@ -60,12 +60,8 @@
 
                       <fieldset class="form-group col-lg-3">
                         <h5 class="mt-2">Cell</h5>
-                        <select class="form-control" id="basicSelect" name="Cname">
+                        <select class="form-control" id="slct2" name="Cname">
                           <option>Select Cell</option>
-                          <option>Nkoma</option>
-                          <option>Shonga</option>
-                          <option>Kirebe</option>
-                          <option>Rwimiyaga</option>
                         </select>
                       </fieldset>
                     </div>
@@ -106,5 +102,24 @@
         </section>
       </div>
     </div>
+    <script>
+      function populate(s1,s2){
+          var s1 = document.getElementById(s1);
+          var s2 = document.getElementById(s2);
+          s2.innerHTML = "";
+          if(s1.value == "Tabagwe"){
+              var optionArray = ["|","Gitengure|Gitengure","Nyabitekeri|Nyabitekeri","Nkoma|Nkoma","Nyagatoma|Nyagatoma","Shonga|Shonga","Gishuro|Gishuro","Tabagwe|Tabagwe"];
+          } else if(s1.value == "Rwimiyaga"){
+              var optionArray = ["|","Kirebe|Kirebe","Gacundezi|Gacundezi","Nyarupfubire|Nyarupfubire","Kabeza|Kabeza","Ntoma|Ntoma","Nyendo|Nyendo","Rwimiyaga|Rwimiyaga","Rutungu|Rutungu"];
+          } 
+          for(var option in optionArray){
+              var pair = optionArray[option].split("|");
+              var newOption = document.createElement("option");
+              newOption.value = pair[0];
+              newOption.innerHTML = pair[1];
+              s2.options.add(newOption);
+          }
+      }
+      </script>
   </div>
 {% endblock %}

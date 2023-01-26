@@ -57,7 +57,7 @@
                                 <td>
                                   {% if msg.replied %}
                                   <button type="button" class="btn btn-warning btn-min-width mr-1 mb-1">Replied</button>
-                                  {% elif request.user.typee == "Admin" %}
+                                  {% elif request.user.typee == "Vet" %}
                                   <a href="{% url 'ReplyMsg' msg.id %}" style="color:white"><button type="button" class="btn btn-primary btn-min-width mr-1 mb-1">Reply</button></a> 
                                   {% else %}
                                   <a href="" style="color:white"><button type="button" class="btn btn-info btn-min-width mr-1 mb-1">Sent</button></a> 

@@ -60,7 +60,10 @@
                                   <th>Cell</th>
                                   <th>Email</th>
                                   <th>PhoneNumber</th>
+                                  {% if request.user.typee == "Admin" %}
                                   <th>Action</th>
+                                  {%endif%}
+
                               </tr>
                           </thead>
                           <tbody>
@@ -74,6 +77,8 @@
                                   <td>{{vet.Cell}}</td>
                                   <td>{{vet.email}}</td>
                                   <td>{{vet.phone}}</td>
+                                  
+                                  {% if request.user.typee == "Admin" %}
                                   <td>
                                     <a href="{% url 'updateUser' vet.id %}" style="color:white">
                                       <button type="button" class="btn btn-info btn-min-width mr-1 mb-1"><i class="la la-pencil-square"></i></button> 
@@ -83,6 +88,7 @@
                                       <button type="button" class="btn btn-danger btn-min-width mr-1 mb-1"><i class="la la-bitbucket-square"></i></button> 
                                     </a>
                                   </td>
+                                  {%endif%}
                               </tr>
                               {% endfor %}
                           </tbody>

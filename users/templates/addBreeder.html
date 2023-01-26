@@ -6,7 +6,7 @@
       <div class="content-wrapper-before"></div>
       <div class="content-header row">
         <div class="content-header-left col-md-4 col-12 mb-2">
-          <h3 class="content-header-title">Add New Breeder</h3>
+          <h3 class="content-header-title">Add New Breederr</h3>
         </div>
       </div>
       <div class="content-body">
@@ -31,43 +31,40 @@
                           <input type="text" class="form-control" id="basicInput" name="lname" />
                         </fieldset>
                       </div>
-                      <div class="row">
-                        <fieldset class="form-group col-lg-3">
-                          <h5 class="mt-2">Province</h5>
-                          <select class="form-control" id="basicSelect" name="Pname">
-                            <option>Select Province</option>
-                            <option>Eastern</option>
-                          </select>
-                        </fieldset>
+                    </div>
+                    <div class="row">
+                      <fieldset class="form-group col-lg-3">
+                        <h5 class="mt-2">Province</h5>
+                        <select class="form-control" id="basicSelect" name="Pname">
+                          <option>Select Province</option>
+                          <option>Eastern</option>
+                        </select>
+                      </fieldset>
 
-                        <fieldset class="form-group col-lg-3">
-                          <h5 class="mt-2">District</h5>
-                          <select class="form-control" id="basicSelect" name="Dname">
-                            <option>Select District</option>
-                            <option>Nyagatare</option>
-                          </select>
-                        </fieldset>
+                      <fieldset class="form-group col-lg-3">
+                        <h5 class="mt-2">District</h5>
+                        <select class="form-control" id="basicSelect" name="Dname">
+                          <option>Select District</option>
+                          <option>Nyagatare</option>
+                        </select>
+                      </fieldset>
 
-                        <fieldset class="form-group col-lg-3">
-                          <h5 class="mt-2">Sector</h5>
-                          <select class="form-control" id="basicSelect" name="Sname">
-                            <option>Select Sector</option>
-                            <option>Tabagwe</option>
-                            <option>Rwimiyaga</option>
-                          </select>
-                        </fieldset>
+                      <fieldset class="form-group col-lg-3">
+                        <h5 class="mt-2">Sector</h5>
+                        <select class="form-control" id="slct1" name="Sname" onchange="populate(this.id,'slct2')">
+                          <option>Select Sector</option>
+                          <option>Tabagwe</option>
+                          <option>Rwimiyaga</option>
+                        </select>
+                      </fieldset>
 
-                        <fieldset class="form-group col-lg-3">
-                          <h5 class="mt-2">Cell</h5>
-                          <select class="form-control" id="basicSelect" name="Cname">
-                            <option>Select Cell</option>
-                            <option>Nkoma</option>
-                            <option>Shonga</option>
-                            <option>Kirebe</option>
-                            <option>Rwimiyaga</option>
-                          </select>
-                        </fieldset>
-                      </div>
+                      <fieldset class="form-group col-lg-3">
+                        <h5 class="mt-2">Cell</h5>
+                        <select class="form-control" id="slct2" name="Cname">
+                          <option>Select Cell</option>
+                        </select>
+                      </fieldset>
+                    </div>
                       <div class="row">
                         <fieldset class="form-group col-lg-4">
                           <h5 class="mt-2">Email</h5>
@@ -95,5 +92,24 @@
         </section>
       </div>
     </div>
+    <script>
+      function populate(s1,s2){
+          var s1 = document.getElementById(s1);
+          var s2 = document.getElementById(s2);
+          s2.innerHTML = "";
+          if(s1.value == "Tabagwe"){
+              var optionArray = ["|","Gitengure|Gitengure","Nyabitekeri|Nyabitekeri","Nkoma|Nkoma","Nyagatoma|Nyagatoma","Shonga|Shonga","Gishuro|Gishuro","Tabagwe|Tabagwe"];
+          } else if(s1.value == "Rwimiyaga"){
+              var optionArray = ["|","Kirebe|Kirebe","Gacundezi|Gacundezi","Nyarupfubire|Nyarupfubire","Kabeza|Kabeza","Ntoma|Ntoma","Nyendo|Nyendo","Rwimiyaga|Rwimiyaga","Rutungu|Rutungu"];
+          } 
+          for(var option in optionArray){
+              var pair = optionArray[option].split("|");
+              var newOption = document.createElement("option");
+              newOption.value = pair[0];
+              newOption.innerHTML = pair[1];
+              s2.options.add(newOption);
+          }
+      }
+      </script>
   </div>
 {% endblock %}
