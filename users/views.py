@@ -352,7 +352,7 @@ def exportCsv(request):
     writer = csv.writer(response)
     writer.writerow([
 
-        'RVF CATTLE CARE'
+        'Cattle Disease \n Management(RVF)'
     ])
     
     writer.writerow([
@@ -406,7 +406,7 @@ def exportVet(request):
     writer = csv.writer(response)
     writer.writerow([
 
-        'RVF CATTLE CARE'
+        'Cattle Disease \n Management(RVF)'
     ])
 
     writer.writerow([
@@ -454,7 +454,7 @@ def exportHand(request):
     writer = csv.writer(response)
     writer.writerow([
 
-        'RVF CATTLE CARE'
+        'Cattle Disease \n Management(RVF)'
     ])
 
     writer.writerow([
@@ -502,7 +502,7 @@ def exportBreeder(request):
     writer = csv.writer(response)
     writer.writerow([
 
-        'RVF CATTLE CARE'
+        'Cattle Disease \n Management(RVF)'
     ])
 
     writer.writerow([
