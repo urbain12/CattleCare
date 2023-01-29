@@ -352,7 +352,7 @@ def exportCsv(request):
     writer = csv.writer(response)
     writer.writerow([
 
-        'Cattle Disease \n Management(RVF)'
+        'Cattle Disease Management(RVF)'
     ])
     
     writer.writerow([
@@ -406,7 +406,7 @@ def exportVet(request):
     writer = csv.writer(response)
     writer.writerow([
 
-        'Cattle Disease \n Management(RVF)'
+        'Cattle Disease Management(RVF)'
     ])
 
     writer.writerow([
@@ -454,7 +454,7 @@ def exportHand(request):
     writer = csv.writer(response)
     writer.writerow([
 
-        'Cattle Disease \n Management(RVF)'
+        'Cattle Disease Management(RVF)'
     ])
 
     writer.writerow([
@@ -480,14 +480,14 @@ def exportHand(request):
             instalments.append(transactions)
 
     writer.writerow([
-        "Number of Vet: " + str(len(instalments))
+        "Number of Abatwarasibo: " + str(len(instalments))
 
     ])
     writer.writerow([
         ''
 
     ])
-    writer.writerow(['Vet Names','Sector','Cell','phone','email'])
+    writer.writerow(['Abatwarasibo Names','Sector','Cell','phone','email'])
     for user in instalments:
         writer.writerow(user)
 
@@ -502,7 +502,7 @@ def exportBreeder(request):
     writer = csv.writer(response)
     writer.writerow([
 
-        'Cattle Disease \n Management(RVF)'
+        'Cattle Disease  Management(RVF)'
     ])
 
     writer.writerow([
@@ -528,14 +528,14 @@ def exportBreeder(request):
             instalments.append(transactions)
 
     writer.writerow([
-        "Number of Vet: " + str(len(instalments))
+        "Number of Breeders: " + str(len(instalments))
 
     ])
     writer.writerow([
         ''
 
     ])
-    writer.writerow(['Vet Names','Sector','Cell','phone','email'])
+    writer.writerow(['Breeders Names','Sector','Cell','phone','email'])
     for user in instalments:
         writer.writerow(user)
 
